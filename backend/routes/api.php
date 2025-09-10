@@ -1,19 +1,9 @@
 <?php
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Route; // Rutas API para el inventario
+use App\Http\Controllers\InventoryController; // Importar el controlador 
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "api" middleware group. Make something great!
-|
-*/
-
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('/inventories', [InventoryController::class, 'index']);
+Route::post('/inventories', [InventoryController::class, 'store']);
+Route::put('/inventories/{id}', [InventoryController::class, 'update']);
+Route::delete('/inventories/{id}', [InventoryController::class, 'destroy']);// Rutas CRUD
